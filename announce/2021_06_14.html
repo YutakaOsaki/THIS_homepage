@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--reset css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!--font-->
+    <script type="text/javascript" src="../js/font.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/gle7rbt.css">
+    <script>var os = (navigator.appVersion.indexOf ("Win", 0) != -1) ? "winfont" : "macfont";
+    document.write ('<link rel="stylesheet" type="text/css" href="../css/' + os + '.css">');
+    </script>
+    <!--css-->
+    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/announce.css">
+    <!--js-->
+    <script type="text/javascript" src="../js/home.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"></script>
+    <script type="text/javascript" src="../js/fsvs.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+            var slider = $.fn.fsvs({
+                autoPlay            : false,
+                speed               : 1000,
+                bodyID              : 'fsvs-body',
+                selector            : '> .slide',
+                mouseSwipeDisance   : 100,
+                afterSlide          : function(){},
+                beforeSlide         : function(){
+                    $('.active-slide .effect-fade').addClass('effect-scroll');
+                    $('.active-slide .effect-fade_side1').addClass('effect-right');
+                    $('.active-slide .effect-fade_side2').addClass('effect-left');
+                    var w = $(window).width();
+                    if($('.nav4').hasClass('active')) {
+                        $('.main_nav_entry_detail').addClass('fade_out');
+                    }
+                    else if($('.nav5').hasClass('active') || $('.nav6').hasClass('active')) {
+                        $('.main_nav_entry_detail').removeClass('fade_out');
+                        document.getElementById('to_entry_detail').innerHTML = "<h3>↑<br>ENTRY<br>詳細</h3>";
+                        if (w < 800) {
+                            $('.main_nav_entry_detail').css('top', '90vh'); 
+                        }
+                        else if (800< w < 1000) {
+                            $('.main_nav_entry_detail').css('top', '85vh');
+                        }
+                        else {
+                            $('.main_nav_entry_detail').css('top', '15vh');
+                        }
+                    }
+                    else {
+                        $('.main_nav_entry_detail').removeClass('fade_out');
+                        document.getElementById('to_entry_detail').innerHTML = "<h3>ENTRY<br>詳細<br>↓</h3>";
+                        if (w < 800) {
+                            $('.main_nav_entry_detail').css('top', '90vh'); 
+                        }
+                        else {
+                            $('.main_nav_entry_detail').css('top', '85vh'); 
+                        }
+                    }
+                    if($('.nav3').hasClass('active')){
+                        $('.date2').addClass('sche_ani_1');
+                        $('.date3').addClass('sche_ani_2');
+                        $('.date4').addClass('sche_ani_3');
+                    }
+                    if($('.nav2').hasClass('active')){
+                        $('.about_shibusawa').addClass('about_dantai_shibusawa');
+                        
+                    }
+                },
+                endSlide            : function(){},
+                mouseWheelEvents    : true,
+                mouseWheelDelay     : false,
+                mouseDragEvents     : false,
+                touchEvents         : true,
+                arrowKeyEvents      : true,
+                pagination          : true,
+                nthClasses          : 6,
+                detectHash          : true,
+            });
+        });
+    </script>
+    <script>
+    $(function() {
+        var h = $(window).height();
+        $('#loading__wrapper').css('display','none');
+        $('#is-loading ,#loading').height(h).css('display','block');
+    });
+    $(window).load(function () {
+        $('#is-loading').delay(5000).fadeOut(800);
+        $('#loading').delay(5000).fadeOut(300);
+        $('#loading__wrapper').css('display', 'block');
+    });
+    $(function(){
+        setTimeout('stopload()',1000);
+    });
+    function stopload(){
+        $('#loading__wrapper').css('display','block');
+        $('#is-loading').delay(4000).fadeOut(800);
+        $('#loading').delay(1000).fadeOut(300);
+    }
+    </script>
+  
+
+    <title>THIS-ビジコン | 澁澤塾×Attic Lab コラボイベント</title>
+</head>
+<body> 
+        <div id="loading__wrapper">
+    <header>
+        <!--右側ヘッダー-->
+        <a href="../home.html">
+            <div class="logo">
+                <img src="../img/THIS_logo.png" width="140px">
+            </div>
+        </a>
+        <!--左側ヘッダー-->
+        <nav class="nav_list">
+            <ul><!--エントリーフォーム-->
+                <a class="nav_list_entry" href="https://docs.google.com/forms/d/e/1FAIpQLSeqFU4ecalMQMCX5vp1b5ht_XiU2w8D92G1fWD7oaowDVp7tQ/viewform"　target="_blank" rel="noopener">
+                    <li class="nav_entry">
+                        <h3>ENTRY FORM</h3>
+                    </li>
+                </a>
+                <li></li>
+                <!--Shibusawa Attic-->
+                <li class="nav_list_dantai_shibusawa">
+                    <a href="https://www.shibusawajyuku.com" target="_blank" rel="noopener">
+                        <img src="../img/shibusawa_logo.png" width="80px">
+                    </a>
+                </li>
+                <li class="nav_list_dantai_Attic">
+                    <a href="http://www.atticlab.sakura.ne.jp/top/" target="_blank" rel="noopener">
+                        <img src="../img/Attic_logo.png" width="100px">
+                    </a>
+                </li>
+                <!--SNS-->
+                <li class="nav_list_sns">
+                    <a href="https://twitter.com/ShibusawaXAttic" target="_blank" rel="noopener">
+                        <img src="../img/twitter.png" width="40px">
+                    </a>
+                </li>
+                <li class="nav_list_sns">
+                    <a href="https://twitter.com/ShibusawaXAttic" target="_blank" rel="noopener">
+                        <img src="../img/instagram.png" width="40px">
+                    </a>
+                </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="announce_title">
+        <h1>一次募集開始</h1>
+    </div>
+    <div class="announce_naiyou">
+        <h4></h>
+    </div>
+
+</body>
+</html>
