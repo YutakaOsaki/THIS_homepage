@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ja" class="fsvs">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="./img/THIS_logo.png">
+    <!--reset css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <!--font-->
+    <script type="text/javascript" src="./js/font.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/gle7rbt.css">
+    <script>var os = (navigator.appVersion.indexOf ("Win", 0) != -1) ? "winfont" : "macfont";
+    document.write ('<link rel="stylesheet" type="text/css" href="./css/' + os + '.css">');
+    </script>
+    <!--css-->
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="./css/common.css">
+    <!--js-->
+    <script>
+        // 1.関数の定義
+        function setHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        // 2.初期化
+        setHeight();
+        // 3.ブラウザのサイズが変更された時・画面の向きを変えた時に再計算する
+        window.addEventListener('resize', setHeight);
+    </script>
+    <script>
+        var os = (navigator.appVersion.indexOf ("Win", 0) != -1) ? "win" : "mac";
+        if (os = "mac"){
+            $('.sche_home').addClass('sche_home_font');
+        }
+    </script>
+    <script type="text/javascript" src="./js/home.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/ScrollTrigger.min.js"></script>
+    <script type="text/javascript" src="./js/fsvs.js"></script>
+    <script>
+        jQuery(document).ready(function($){
+            var slider = $.fn.fsvs({
+                autoPlay            : false,
+                speed               : 1000,
+                bodyID              : 'fsvs-body',
+                selector            : '> .slide',
+                mouseSwipeDisance   : 100,
+                afterSlide          : function(){},
+                beforeSlide         : function(){
+                    $('.active-slide .effect-fade').addClass('effect-scroll');
+                    $('.active-slide .effect-fade_side1').addClass('effect-right');
+                    $('.active-slide .effect-fade_side2').addClass('effect-left');
+                    var w = $(window).width();
+                    if($('.nav4').hasClass('active')) {
+                        $('.main_nav_entry_detail').addClass('fade_out');
+                    }
+                    else if($('.nav5').hasClass('active') || $('.nav6').hasClass('active')) {
+                        $('.main_nav_entry_detail').removeClass('fade_out');
+                        document.getElementById('to_entry_detail').innerHTML = "<h3>↑<br>ENTRY<br>詳細</h3>";
+                        if (w < 800) {
+                            $('.main_nav_entry_detail').css('top', '90vh'); 
+                        }
+                        else if (800< w < 1000) {
+                            $('.main_nav_entry_detail').css('top', '85vh');
+                        }
+                        else {
+                            $('.main_nav_entry_detail').css('top', '15vh');
+                        }
+                    }
+                    else {
+                        $('.main_nav_entry_detail').removeClass('fade_out');
+                        document.getElementById('to_entry_detail').innerHTML = "<h3>ENTRY<br>詳細<br>↓</h3>";
+                        if (w < 800) {
+                            $('.main_nav_entry_detail').css('top', '90vh'); 
+                        }
+                        else {
+                            $('.main_nav_entry_detail').css('top', '85vh'); 
+                        }
+                    }
+                    if($('.nav3').hasClass('active')){
+                        $('.date2').addClass('sche_ani_1');
+                        $('.date3').addClass('sche_ani_2');
+                        $('.date4').addClass('sche_ani_3');
+                    }
+                    if($('.nav2').hasClass('active')){
+                        $('.about_shibusawa').addClass('about_dantai_shibusawa');
+                        
+                    }
+                },
+                endSlide            : function(){},
+                mouseWheelEvents    : true,
+                mouseWheelDelay     : false,
+                mouseDragEvents     : false,
+                touchEvents         : true,
+                arrowKeyEvents      : true,
+                pagination          : true,
+                nthClasses          : 6,
+                detectHash          : true,
+            });
+        });
+    </script>
+    <script>
+    $(function() {
+        var h = $(window).height();
+        $('#loading__wrapper').css('display','none');
+        $('#is-loading ,#loading').height(h).css('display','block');
+    });
+    $(window).load(function () {
+        $('#is-loading').delay(5000).fadeOut(800);
+        $('#loading').delay(5000).fadeOut(300);
+        $('#loading__wrapper').css('display', 'block');
+    });
+    $(function(){
+        setTimeout('stopload()',1000);
+    });
+    function stopload(){
+        $('#loading__wrapper').css('display','block');
+        $('#is-loading').delay(4000).fadeOut(800);
+        $('#loading').delay(1000).fadeOut(300);
+    }
+    </script>
+    <script>
+            const setFillHeight = () => {
+                const vh = window.innerHeight * 0.01;
+                document.documentElement.style.setProperty('--vh', `${vh}px`);
+            }
+            // 画面のサイズ変動があった時に高さを再計算する
+            window.addEventListener('resize', setFillHeight);
+            // 初期化
+            setFillHeight();
+    </script>
+
+    <title>THIS-ビジコン | 澁澤塾×Attic Lab コラボイベント</title>
+</head>
+<body>
+     <div id="is-loading">
+        <div id="loading">
+         <img src="./img/THIS_logo_text.svg"/>
+        </div>
+    </div>
+        <div id="loading__wrapper">
+    <header>
+        <!--右側ヘッダー-->
+        <a href="./home.html">
+            <div class="logo">
+                <img src="./img/THIS_logo.png" width="140px">
+            </div>
+        </a>
+        <!--左側ヘッダー-->
+        <nav class="nav_list">
+            <ul><!--エントリーフォーム-->
+                <a class="nav_list_entry" href="https://docs.google.com/forms/d/e/1FAIpQLSeqFU4ecalMQMCX5vp1b5ht_XiU2w8D92G1fWD7oaowDVp7tQ/viewform?usp=sf_link"　target="_blank" rel="noopener">
+                    <li class="nav_entry">
+                        <h3>ENTRY FORM</h3>
+                    </li>
+                </a>
+                <li></li>
+                <!--Shibusawa Attic-->
+                <li class="nav_list_dantai_shibusawa">
+                    <a href="https://www.shibusawajyuku.com" target="_blank" rel="noopener">
+                        <img src="./img/shibusawa_logo.png" width="80px">
+                    </a>
+                </li>
+                <li class="nav_list_dantai_Attic">
+                    <a href="http://www.atticlab.sakura.ne.jp/top/" target="_blank" rel="noopener">
+                        <img src="./img/Attic_logo.png" width="100px">
+                    </a>
+                </li>
+                <!--SNS-->
+                <li class="nav_list_sns">
+                    <a href="https://twitter.com/ShibusawaXAttic" target="_blank" rel="noopener">
+                        <img src="./img/twitter.png" width="40px">
+                    </a>
+                </li>
+                <li class="nav_list_sns">
+                    <a href="https://www.instagram.com/shibusawaxattic/" target="_blank" rel="noopener">
+                        <img src="./img/instagram.png" width="40px">
+                    </a>
+                </li>
+                </div>
+            </ul>
+        </nav>
+    </header>
+  
+
+        <a href="#entry">
+            <div class="main_nav_entry_detail" id="to_entry_detail">
+                <h3>ENTRY<br>詳細<br>↓</h3>
+            </div>
+        </a>
+    <!--</div>-->
+    <div class="main" id="fsvs-body">
+        
+<!--info-->
+        <section class="section slide" id="info"><!--class="section"を追加、他のsectionにも同じ変更-->
+            <div class="info_top">
+                <div class="karamuki">
+                    <div class="box_a"></div>
+                  </div>
+             
+                <div class="info_top_img">
+                    <img src="./img/THIS_text.svg" class="this_text">
+                </div>
+                <div class="info_top_explain">
+                    <h1>2021年夏開催<br>東工大一橋初コラボイベント<br>ビジネスコンテスト「THIS」<br>アツくなれば、殻は破れる。</h1>
+                </div>
+            </div>
+            <div class="info_announce">
+                <div class="info_announce_title">
+                    <h2>INFORMATION</h2>
+                </div>
+　   <!--announce-->
+<!--templete
+<a href="./announce/" target="_blank" rel="noopener">
+    <div class="effect-fade info_announce_item">
+        <h3>情報</h3>
+    </div>
+    <div class="info_announce_item_mark">
+            ＞
+    </div>
+</a>-->
+             <!--   <a href="./announce/2021_06_14.html" target="_blank" rel="noopener">
+                    <div class="info_announce_item">
+                        <h3>2021,06,14(金)　一次募集開始</h3>
+                    </div>
+                    <div class="info_announce_item_mark">
+                            ＞
+                    </div>
+                </a>-->
+            </div>
+        </section>
+<!--about-->
+        <section class="slide" id="about">
+            <div class="effect-fade about_title">
+                <h1>ABOUT</h1>
+            </div>
+            <div class="effect-fade about_top">
+                <h2>ーーイベント概要ーー</h2>
+                <div class="about_naka">
+                    <div class="about_naka_taki_date"><!--追加-->
+                        <div class="about_naka_contents about_top_taki"><!--class追加-->
+                            <h2>開催場所</h2><br><a href="https://takiplaza.gakumu.titech.ac.jp" target="_blank" rel="noopener">
+                                <h3>未定</h3></a>
+                            <img src="./img/takiplaza.png" width="300px">
+                        </div>
+                        <div class="about_naka_contents about_top_explain_date"><!--class追加-->
+                            <h2>日程</h2><!--br削除-->
+                            <br>
+                            <h3>2021年8月16日〜9月10日</h3>
+                        </div>
+                    </div><!--追加-->
+                    <div class="about_naka_contents about_top_explain_purpose"><!--追加-->
+                        <h2>目的</h2><!--br削除-->
+                        <br>
+                        <h3>今まであまり無かった、一橋大学と東京工業大学との結びつきを学生主導で強めていく</h3>
+                    </div><!--追加-->
+                </div>
+                <div class="about_top_click_naiyo">
+                    <h2>イベント詳細</h2><br>
+                    <div class="about_top_click_naiyo_detail">
+                        <h3>両大学からそれぞれ2名、計4名のチームを形成し、チームで設定されたテーマに沿ったビジネスアイディアを作り上げていきます。イベントを通し、学生メンターや社会人カウンセラーとの壁打ちなどを実施し、更なる磨きをかけていただきます。
+                        第1週目ではグループワークや講演などを通じた勉強会を行います。2週目以降は最終日に向け、アイディアの考案・壁打ちなどを行います。最終日には豪華審査員の前でプレゼンを行い、受賞チームを決定します。</h3>
+                    </div>
+                    <div class="about_top_click_naiyou_sns">
+                        <a href="https://twitter.com/ShibusawaXAttic" target="_blank" rel="noopener">
+                            <img src="./img/twitter.png" width="60px">
+                        </a>
+                        @ShibusawaXAttic
+                        <div class="about_top_click_naiyou_sns_blank"></div>
+                        <a href="https://www.instagram.com/shibusawaxattic/" target="_blank" rel="noopener">
+                            <img src="./img/instagram.png" width="60px">
+                        </a>
+                        @ShibusawaXAttic
+                    </div>
+                </div>
+                <button class="about_top_yajirusi_ue">
+                    <h1>＞</h1>
+                </button>
+                <button class="about_top_yajirusi_sita">
+                    <h1>＞</h1>
+                </button>
+            </div>
+            <div class="effect-fade about_dantai_title">
+                <h2>ーーーーー主催団体ーーーーー</h2>
+                <div class="about_dantai">
+                    <div class="effect-fade_side1 about_shibusawa">
+                        <div class="about_dantai_shibusawa_title">
+                            <h2>澁澤塾</h2><img src="./img/shibusawa_logo.png" width="80px"><h4>一橋大学公認団体</h4>
+                        </div>
+                        <br>
+                        <div class="about_dantai_explain">
+                            <h3>「一橋生に幅広い選択肢と挑戦する機会を提示することで一橋生を盛り上げ、一橋大学を盛り上げ、社会を盛り上げる」ことを団体理念に掲げ、講演会企画や学年・学部横断の学内最大のコミュニティを運営する一橋大学公認の学生団体です。</h3>
+                        </div>
+                            <div class="about_top_click_naiyou_sns">
+                                <a href="https://www.shibusawajyuku.com" target="_blank" rel="noopener">
+                                    <img src="./img/homepage.png" width="40px">
+                                </a>
+                                <div class="about_top_click_naiyou_sns_blank"></div>
+                            <a href="https://twitter.com/shibusawajyuku" target="_blank" rel="noopener">
+                                <img src="./img/twitter.png" width="40px">
+                            </a>
+                            <div class="about_top_click_naiyou_sns_blank"></div>
+                            <a href="https://instagram.com/shibusawajyuku?utm_medium=copy_link" target="_blank" rel="noopener">
+                                <img src="./img/instagram.png" width="40px">
+                            </a>
+                            </div>
+             
+                    </div>
+                    <div class="effect-fade_side2 about_dantai_attic">
+                        <div class="about_dantai_attic_title">
+                            <h2>Attic Lab</h2><img src="./img/Attic_logo.png" width="80px"><h4>東京工業大学公認団体</h4>
+                        </div>
+                        <br>
+                        <div class="about_dantai_explain">
+                            <h3>学生のためのコワーキングスペースで、スタートアップを創業したい、これから何か新しいことを始めたい、自分のアイデアを実現したい、さまざまなイベントを通じてネットワークを広げたい、といった目的を持つ東工大生が集まる場です。</h3>
+                        </div>
+                        <div class="about_top_click_naiyou_sns">
+                            <a href="http://www.atticlab.sakura.ne.jp/top/" target="_blank" rel="noopener">
+                                <img src="./img/homepage.png" width="40px">
+                            </a>
+                            <div class="about_top_click_naiyou_sns_blank"></div>
+                        <a href="https://twitter.com/AtticLab_titech?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" target="_blank" rel="noopener">
+                            <img src="./img/twitter.png" width="40px">
+                        </a>
+                        <div class="about_top_click_naiyou_sns_blank"></div>
+                        <a href="https://instagram.com/atticlab.tokyotech?utm_medium=copy_link" target="_blank" rel="noopener">
+                            <img src="./img/instagram.png" width="40px">
+                        </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!--theme-->
+     <!--   <section class="slide" id="theme">
+            <div class="theme_top">
+                <h1>THEME</h1>
+                <br><br><br><br><br><br><br><br><br><br><br><br>
+                <h2>COMMING SOON!!</h2>
+            </div>
+        </section>-->
+<!--schedule as sche-->
+<section class="slide" id="sche">
+    <div class="sche">
+        <div class="sche_title">
+            <h1>SCHEDULE</h1>
+        </div>
+        <div class="sche_home">
+            <div class="sche_top">
+                <!--篤典が書いていきますよ！！-->
+                <div class="key-dates">
+                    <div class="tr_center">
+                    <div class="triangle01 tr01"></div>
+                    <div class="triangle01 tr02"></div>
+                    <div class="triangle01 tr03"></div>
+                    <div class="triangle01 tr04"></div>
+                    <div class="triangle01 tr05"></div>
+                    <div class="triangle01 tr06"></div>
+                    <div class="triangle01 tr07"></div>
+                    <div class="triangle01 tr08"></div>
+                    <div class="triangle01 tr09"></div>
+                    </div>
+                    <div class="key-date sche1">
+                        <div class="key-date-inner-wrap">
+                            <div  class="key-date-inner">
+                                <h2 class="effect-fade date date-up date1">
+                                    <div class="sche-text1">
+                                    <h3 class="effect-fade text-long">募集期間</h3>
+                                    <div class="effect-fade text_sche_1">
+                                    <h4>6月14日～7月25日</h4>
+                                    <h5>一次募集：7月4日まで<br>二次募集：7月25日まで</h5>
+                                    </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="key-date sche2">
+                        <div class="key-date-inner-wrap">
+                            <div  class="key-date-inner">
+                                <h2 class="date_shiki date-down date2">
+                                   <div class="sche-text2"> 
+                                    <h3 class="text-short">開会式</h3>
+                                    <div class="text_sche_2">
+                                    <h4>8月16日</h4>
+                                    <h5>キックオフ
+                                    </h5>
+                                    </div>
+                                   </div>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="key-date sche3">
+                        <div class="key-date-inner-wrap">
+                            <div  class="key-date-inner">
+                                <h2 class="date date-up date3">
+                                  <div class="sche-text3">
+                                    <h3 class="text-long">開催期間</h3>
+                                    <div class="text_sche_3">
+                                    <h4>8月16日～9月10日</h4>
+                                    <h5>勉強会、グループワーク、ビジネスアイデア考案</h5>
+                                    </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="key-date sche4">
+                        <div class="key-date-inner-wrap">
+                            <div  class="key-date-inner">
+                                <h2 class="date_shiki date-down date4">
+                                    <div class="sche-text4">
+                                    <h3 class="text-short">閉会式</h3>
+                                    <div class="text_sche_4">
+                                    <h4>9月10日</h4>
+                                    <h5>最終発表</h5>
+                                    </div>
+                                    </div>
+                                </h2>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+    
+</section>
+        <div class="slide" id="entry">
+            <div class="effect-fade entry_top">
+                <h1>ENTRY</h1>
+                <div class="effect-fade entry_top_naka">
+                    <div class="effect-fade_side1 entry_top_naka_taisyo">
+                        <h2>参加対象</h2><br>
+                        <h3>一橋大学生20人　東京工業大学生20人</h3>
+                    </div>
+                    <div class="effect-fade_side2 entry_top_naka_youko">
+                        <h2>募集条件</h2><br>
+                        <h3>一橋大学、東京工業大学に所属している学生</h3>
+                        <h4>（学部学年不問）</h4>
+                    </div>
+                    <div class="effect-fade entry_top_naka_flow">
+                        <div class="entry_flow_title">
+                    　　　<h2>参加応募手順</h2>
+                    　　　</div>
+                        <div class="effect-fade entry_flow">
+                            <div class="entry_flow_1_circle">１</div>
+                            <div class="entry_flow_1_naiyo">エントリーフォームへの記入</div>
+                        </div>
+                        <div class="effect-fade entry_flow">
+                            <div class="entry_flow_2_circle">２</div>
+                            <div class="entry_flow_2_naiyo">事前課題の提出<br>（フォーム記入後の自動返信メールを参照）</div>
+                        </div>
+                        <div class="effect-fade entry_flow">
+                            <div class="entry_flow_3_circle">３</div>
+                            <div class="entry_flow_3_naiyo">運営側での審査</div>
+                        </div>
+                        <div class="effect-fade entry_flow">
+                            <div class="entry_flow_4_circle">４</div>
+                            <div class="entry_flow_4_naiyo">参加決定</div>
+                        </div>
+                    </div>
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeqFU4ecalMQMCX5vp1b5ht_XiU2w8D92G1fWD7oaowDVp7tQ/viewform?usp=sf_link" target="_blank" rel="noopener">
+                    <div class="entry_top_form">
+                        <h2>ENTRY FORM</h2>
+                        
+                    </div>
+                    </a>
+                    <div class="effect-fade entry_this">
+                    <h3>↑参加応募はここから↑</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--support as sup-->
+        <section class="slide" id="sup">
+            <div class="effect-fade sup_title">
+            <h1>SUPPORTER</h1>
+            <br><br><br><br><br><br><br><br><br><br><br><br>
+            <h2>COMING SOON!!</h2>
+            </div>
+        </section>
+<!--contact as cont-->
+        <section class="slide" id="cont">
+            <h1>CONTACT</h1>
+            <div class="effect-fade cont_top">
+                <div class="cont_top_event">
+                    <div class="cont_top_event_explain">
+                        <a href="https://twitter.com/ShibusawaXAttic" target="_blank" rel="noopener">
+                        <div class="cont_top_event_sns">
+                            <img src="./img/twitter.png" width="40px">
+                            <div class="cont_top_click_naiyou_sns_blank"></div>
+                            @ShibusawaXAttic
+                        </div>
+                        </a>
+                        <a href="https://www.instagram.com/shibusawaxattic/" target="_blank" rel="noopener">
+                        <div class="cont_top_event_sns">
+                            <img src="./img/instagram.png" width="40px">
+                            <div class="cont_top_click_naiyou_sns_blank"></div>
+                            @ShibusawaXAttic
+                        </div>
+                        </a>
+                        <div class="cont_top_event_sns">
+                            <img src="./img/email.png" width="40px">
+                            <div class="cont_top_click_naiyou_sns_blank"></div>
+                            shibusawaXattic@gmail.com
+                        </div>
+                        
+                    </div>
+                    <h4>お問い合わせなどは上記SNSのDM、またはメールにお送りください。</h4>
+                    <div class="cont_top_event_logo">
+                        <img src="./img/THIS_logo.png" class="cont_logo">
+                    </div>
+                    <!--<h5>@Copyright2021 澁澤塾 AtticLab All Rights Reserved.</h5>-->
+                </div>
+            </div>
+        </section>
+        </div>
+
+    <script src="./js/home.js"></script>
+</body>
+</html>
