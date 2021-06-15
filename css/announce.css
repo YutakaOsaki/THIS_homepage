@@ -1,0 +1,14 @@
+.announce_title{
+    margin-top: 20vh;
+    z-index: 1;
+    text-align: center;
+}
+.announce_naiyou{
+    margin-top: 40vh;
+    z-index: 1;
+    text-align: center;
+}
+.comming_soon{
+    text-align: center;
+    margin-top: 20%;
+}
